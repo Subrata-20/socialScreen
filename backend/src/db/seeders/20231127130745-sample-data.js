@@ -41,6 +41,26 @@ const AchievementsData = [
 
     achieved_on: new Date('2023-10-03T10:00:00Z'),
   },
+
+  {
+    // type code here for "relation_one" field
+
+    title: 'Piano Prodigy',
+
+    description: 'Practiced piano daily for a week',
+
+    achieved_on: new Date('2023-10-02T10:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    title: 'Outdoor Explorer',
+
+    description: 'Spent time playing outside every day',
+
+    achieved_on: new Date('2023-10-01T10:00:00Z'),
+  },
 ];
 
 const RewardsData = [
@@ -73,6 +93,26 @@ const RewardsData = [
 
     earned_on: new Date('2023-10-03T11:00:00Z'),
   },
+
+  {
+    // type code here for "relation_one" field
+
+    points: 40,
+
+    description: 'For consistent piano practice',
+
+    earned_on: new Date('2023-10-02T11:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    points: 60,
+
+    description: 'For outdoor activities',
+
+    earned_on: new Date('2023-10-01T11:00:00Z'),
+  },
 ];
 
 const ScreenTimeRecommendationsData = [
@@ -99,6 +139,22 @@ const ScreenTimeRecommendationsData = [
 
     date: new Date('2023-10-03T08:00:00Z'),
   },
+
+  {
+    // type code here for "relation_one" field
+
+    recommended_minutes: 110,
+
+    date: new Date('2023-10-04T08:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    recommended_minutes: 130,
+
+    date: new Date('2023-10-05T08:00:00Z'),
+  },
 ];
 
 const SentimentCheckInsData = [
@@ -107,7 +163,7 @@ const SentimentCheckInsData = [
 
     response: 'I had a great day!',
 
-    sentiment: 'positive',
+    sentiment: 'negative',
 
     check_in_date: new Date('2023-10-01T09:00:00Z'),
   },
@@ -127,9 +183,29 @@ const SentimentCheckInsData = [
 
     response: 'I felt a bit sad.',
 
-    sentiment: 'negative',
+    sentiment: 'positive',
 
     check_in_date: new Date('2023-10-03T09:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    response: 'I enjoyed playing outside.',
+
+    sentiment: 'neutral',
+
+    check_in_date: new Date('2023-10-04T09:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    response: 'I learned something new.',
+
+    sentiment: 'positive',
+
+    check_in_date: new Date('2023-10-05T09:00:00Z'),
   },
 ];
 
@@ -139,7 +215,7 @@ const TasksData = [
 
     description: 'Complete math homework',
 
-    status: 'pending',
+    status: 'completed',
 
     due_date: new Date('2023-10-06T17:00:00Z'),
   },
@@ -159,9 +235,29 @@ const TasksData = [
 
     description: 'Help with dinner preparation',
 
-    status: 'pending',
+    status: 'completed',
 
     due_date: new Date('2023-10-07T17:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    description: 'Practice piano for 30 minutes',
+
+    status: 'pending',
+
+    due_date: new Date('2023-10-06T17:00:00Z'),
+  },
+
+  {
+    // type code here for "relation_one" field
+
+    description: 'Organize school backpack',
+
+    status: 'completed',
+
+    due_date: new Date('2023-10-04T17:00:00Z'),
   },
 ];
 
@@ -200,6 +296,28 @@ async function associateAchievementWithChild() {
   if (Achievement2?.setChild) {
     await Achievement2.setChild(relatedChild2);
   }
+
+  const relatedChild3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Achievement3 = await Achievements.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Achievement3?.setChild) {
+    await Achievement3.setChild(relatedChild3);
+  }
+
+  const relatedChild4 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Achievement4 = await Achievements.findOne({
+    order: [['id', 'ASC']],
+    offset: 4,
+  });
+  if (Achievement4?.setChild) {
+    await Achievement4.setChild(relatedChild4);
+  }
 }
 
 async function associateRewardWithChild() {
@@ -234,6 +352,28 @@ async function associateRewardWithChild() {
   });
   if (Reward2?.setChild) {
     await Reward2.setChild(relatedChild2);
+  }
+
+  const relatedChild3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Reward3 = await Rewards.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Reward3?.setChild) {
+    await Reward3.setChild(relatedChild3);
+  }
+
+  const relatedChild4 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Reward4 = await Rewards.findOne({
+    order: [['id', 'ASC']],
+    offset: 4,
+  });
+  if (Reward4?.setChild) {
+    await Reward4.setChild(relatedChild4);
   }
 }
 
@@ -270,6 +410,28 @@ async function associateScreenTimeRecommendationWithChild() {
   if (ScreenTimeRecommendation2?.setChild) {
     await ScreenTimeRecommendation2.setChild(relatedChild2);
   }
+
+  const relatedChild3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const ScreenTimeRecommendation3 = await ScreenTimeRecommendations.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (ScreenTimeRecommendation3?.setChild) {
+    await ScreenTimeRecommendation3.setChild(relatedChild3);
+  }
+
+  const relatedChild4 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const ScreenTimeRecommendation4 = await ScreenTimeRecommendations.findOne({
+    order: [['id', 'ASC']],
+    offset: 4,
+  });
+  if (ScreenTimeRecommendation4?.setChild) {
+    await ScreenTimeRecommendation4.setChild(relatedChild4);
+  }
 }
 
 async function associateSentimentCheckInWithChild() {
@@ -305,6 +467,28 @@ async function associateSentimentCheckInWithChild() {
   if (SentimentCheckIn2?.setChild) {
     await SentimentCheckIn2.setChild(relatedChild2);
   }
+
+  const relatedChild3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const SentimentCheckIn3 = await SentimentCheckIns.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (SentimentCheckIn3?.setChild) {
+    await SentimentCheckIn3.setChild(relatedChild3);
+  }
+
+  const relatedChild4 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const SentimentCheckIn4 = await SentimentCheckIns.findOne({
+    order: [['id', 'ASC']],
+    offset: 4,
+  });
+  if (SentimentCheckIn4?.setChild) {
+    await SentimentCheckIn4.setChild(relatedChild4);
+  }
 }
 
 async function associateTaskWithAssigned_to() {
@@ -339,6 +523,28 @@ async function associateTaskWithAssigned_to() {
   });
   if (Task2?.setAssigned_to) {
     await Task2.setAssigned_to(relatedAssigned_to2);
+  }
+
+  const relatedAssigned_to3 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Task3 = await Tasks.findOne({
+    order: [['id', 'ASC']],
+    offset: 3,
+  });
+  if (Task3?.setAssigned_to) {
+    await Task3.setAssigned_to(relatedAssigned_to3);
+  }
+
+  const relatedAssigned_to4 = await Users.findOne({
+    offset: Math.floor(Math.random() * (await Users.count())),
+  });
+  const Task4 = await Tasks.findOne({
+    order: [['id', 'ASC']],
+    offset: 4,
+  });
+  if (Task4?.setAssigned_to) {
+    await Task4.setAssigned_to(relatedAssigned_to4);
   }
 }
 

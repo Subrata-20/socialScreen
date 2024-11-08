@@ -122,7 +122,7 @@ export default function WebSite() {
         <FeaturesSection
           projectName={'socialScreen'}
           image={['Children using app together']}
-          withBg={0}
+          withBg={1}
           features={features_points}
           mainText={`Innovative Features of ${projectName}`}
           subTitle={`Explore the unique features of ${projectName} that support children's growth and family collaboration.`}
